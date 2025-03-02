@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<div class="jumbotron">
+    <h1>CapstoneProject</h1>
+    <p class="lead">
+        Article narration in a selected voice: Create a GenAI application to do the following.
+        provide an article of your choice to the application. Then narrate this article in a voice you choose.
+        Produce spoken audio in 3 languages
+        Also provide a real time audio output using streaming. Use openai audio and text capabilities
+
+    </p>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <h1>Project Algorithm</h1>
+        <ul>
+            <li>Read the Article Input from a Text prompt/A Url/Upload a File</li>
+            <li>TTS Model of three languages</li>
+            <li>Custom Voice used for Audio Generation</li>
+            <li>Application is using llama3.1 for text conversion</li>
+            <li>TTS base model from hugging face: xtts_v2 is used for audio generation</li>
+        </ul>
+
+    </div>
+    <div class="col-md-4">
+        <p><h1>Text-to-Speech Converter</h1></p>
+        <textarea id="prompt" rows="5" cols="100" placeholder="Enter your text here..."></textarea>
+        <br>
+        <br>
+        <label for="voice">Select Voice:</label>
+        <select id="voice">
+            <option value="enmale">English Male</option>
+            <option value="enIndmale">Indian English Male</option>
+            <option value="enfemale">Confident Female Voice</option>
+            <option value="ruFemale">Confident Russian Female</option>
+            <option value="enIndian">Confident Indian Female</option>
+        </select>
+        <br>
+        <br>
+        <label for="language">Select Language:</label>
+        <select id="language">
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="french">French</option>
+            <option value="russian">Russian</option>
+        </select>
+        <br>
+        <br>        
+        <div class="col-12">
+            <button id="submit" onclick="submitText()" class="btn btn-outline-dark rounded-pill py-3 px-5" style="height: 55px; width: 300px">Convert</button><br><br>
+        </div>
+        <br>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Result here:</h2>
+        <div class="row g-3">
+            <!-- Section to display the result -->
+            <div id="message"></div>
+
+            <h2>Generated Speech:</h2>
+            <div id="playaudio"></div>
+
+            <a class="btn btn-default" id="download_link" style="display:none;">Download Audio &raquo;</a>
+
+        </div>
+        <div class="row g-3" id="results">
+
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
